@@ -1,0 +1,42 @@
+{% load tz %}
+<title>Diapers for: {{ date_str}} </title>
+<a href={% url 'diapers:index' %}?date={{prevstr}}>previous_day</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href={%url 'diapers:add' %}>Add New</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{% if nextstr != '' %} 
+<a href={% url 'diapers:index' %}?date={{nextstr}}>next day</a>
+{% else %}
+next
+{%endif %}
+<br>
+<br>
+<br>
+<br>
+{% if diapers_wet and diapers_dirty %}
+wet: {{ diapers_wet }} <br>
+dirtry: {{ diapers_dirty}} <br>
+{% else %}
+no wet or dirty found!<br>
+{% endif %}
+{% if diaper_list %}
+    <ul>
+    {% for diaper in diaper_list %}
+    {% localtime on %}
+    
+        <li><a href="/polls/{{ diaper.id }}/">{{ diaper.change_date }}
+	{% if diaper.is_wet %}
+          WET
+        {% endif %}
+	{% if diaper.is_dirty %}
+          DIRTY 
+        {% endif %}
+</a></li>
+    {% endlocaltime  %}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No diapers are available.</p>
+{% endif %}

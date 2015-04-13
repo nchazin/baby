@@ -1,0 +1,12 @@
+<h1>Add A Diaper Change!</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'diapers:add' %}" method="post">
+{% csrf_token %}
+Change Time:<input type="text" name="change_time" value="{% now "Y-m-d H:i" %}">
+<br>
+Wet?:<input type="checkbox" value="is_wet" name="diaper_type_wet"><br>
+Dirty?:<input type="checkbox" value="is_dirty" name="diaper_type_dirty"><br>
+<input type="submit" value="Adde" />
+</form>
