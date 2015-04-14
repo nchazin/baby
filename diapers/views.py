@@ -60,10 +60,6 @@ def add(request):
 	change_timestruct[2], change_timestruct[3], change_timestruct[4])
     wet = posties.has_key("diaper_type_wet")
     dirty = posties.has_key("diaper_type_dirty")
-    for (k,v) in posties.iteritems():
-	print "%s -> %s" % (k,v)
-    print("string: %s - TS: %s -  time: %s" % (posties['change_time'], change_timestruct, change_time))
-    print("wet: %d  dirty: %d" %(wet, dirty)) 
     new_diaper = Diaper(change_date = change_time, is_wet = wet, is_dirty = dirty)
     new_diaper.save()
     return HttpResponseRedirect(reverse('diapers:index'))
