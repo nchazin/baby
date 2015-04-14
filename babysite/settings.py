@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2hk&0*ebnmye(45zm6t-m@37*5gt*2xtv$e0_g7=2pbwtnq^8&'
+SECRETE_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -103,3 +103,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+STATIC_ROOT = "/opt/myenv/static/"
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
